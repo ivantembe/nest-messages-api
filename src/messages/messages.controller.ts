@@ -1,6 +1,8 @@
-import { Controller, Get, Post } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 
 @Controller('messages')
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class MessagesController {
   @Get()
   getAllMessages() {
@@ -8,10 +10,12 @@ export class MessagesController {
   }
 
   @Post()
-  createMessage() {
-    return 'Create new Message';
+  createMessage(@Body() message: any) {
+    console.log(message);
   }
 
   @Get('/:id')
-  getMessage() {}
+  getMessage(@Param('id') id: string) {
+    console.log(id);
+  }
 }
